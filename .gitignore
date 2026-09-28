@@ -1,0 +1,26 @@
+# Machine-specific installation records and screenshots
+/verification/
+
+# Original packages, generated artifacts and extracted vendor files
+*.AppImage
+*.asar
+*.squashfs
+/squashfs-root/
+/dist/
+/build/
+
+# Dependencies and caches
+node_modules/
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.log
+.DS_Store

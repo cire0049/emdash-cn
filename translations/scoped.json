@@ -1,0 +1,77 @@
+[
+  {
+    "before": "return \"You're up to date\";",
+    "after": "return \"已是最新版本\";",
+    "count": 1
+  },
+  {
+    "before": "return \"Update ready to install\";",
+    "after": "return \"更新已就绪，可以安装\";",
+    "count": 1
+  },
+  {
+    "before": "return \"An update is available\";",
+    "after": "return \"有可用更新\";",
+    "count": 1
+  },
+  {
+    "before": "return `Current ${a2} version v${e2} is up to date`;",
+    "after": "return `当前 ${a2} 版本 v${e2} 已是最新版本`;",
+    "count": 1
+  },
+  {
+    "before": "return `Version v${r2.version} is available. Update and restart ${a2} to use the new version`;",
+    "after": "return `版本 v${r2.version} 已发布。更新并重启 ${a2} 以使用新版本`;",
+    "count": 1
+  },
+  {
+    "before": "return `Version v${r2.version} is available. Download and restart ${a2} to use the new version`;",
+    "after": "return `版本 v${r2.version} 已发布。下载并重启 ${a2} 以使用新版本`;",
+    "count": 1
+  },
+  {
+    "before": "return `Restart ${a2} to use the new version`;",
+    "after": "return `重启 ${a2} 以使用新版本`;",
+    "count": 1
+  },
+  {
+    "before": "const statusLabel = isDetected ? \"Detected\" : \"Not detected\";",
+    "after": "const statusLabel = isDetected ? \"已检测到\" : \"未检测到\";",
+    "count": 1
+  },
+  {
+    "before": "children: group.category }",
+    "after": "children: ({\"Files\": \"文件\", \"App\": \"应用\", \"Navigation\": \"导航\", \"View\": \"视图\", \"Conversations\": \"对话\", \"Search\": \"搜索\", \"Panel\": \"面板\", \"Terminals\": \"终端\", \"Browser\": \"浏览器\", \"Task\": \"任务\", \"Code quality\": \"代码质量\", \"Status reports\": \"状态报告\", \"Security\": \"安全\", \"Incidents & triage\": \"事件与问题分诊\", \"Documentation\": \"文档\", \"Tab navigation\": \"标签页导航\", \"Tab Navigation\": \"标签页导航\", \"Editor\": \"编辑器\"})[group.category] ?? group.category }",
+    "count": 1
+  },
+  {
+    "before": "const location2 = detectPlatformContext().os === \"mac\" ? \"menu bar\" : \"system tray\";",
+    "after": "const location2 = detectPlatformContext().os === \"mac\" ? \"菜单栏\" : \"系统托盘\";",
+    "count": 1
+  },
+  {
+    "before": "const title = `Show Emdash in the ${location2}`;",
+    "after": "const title = `在${location2}显示 Emdash`;",
+    "count": 1
+  },
+  {
+    "before": "label: trayIconLabel,",
+    "after": "label: detectPlatformContext().os === \"mac\" ? \"在菜单栏显示 Emdash\" : \"在系统托盘显示 Emdash\",",
+    "count": 1
+  },
+  {
+    "before": "className: \"w-auto shrink-0 gap-2 capitalize [&>span]:line-clamp-none\", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Go$1.Value, {})",
+    "after": "className: \"w-auto shrink-0 gap-2 capitalize [&>span]:line-clamp-none\", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Go$1.Value, { children: notifications2?.soundFocusMode === \"unfocused\" ? \"仅在窗口未聚焦时\" : \"始终\" })",
+    "count": 1
+  },
+  {
+    "before": "const builtinAutomationCatalog = [\n  {\n    id: \"critical-bug-finder\",\n    category: \"Code quality\",\n    name: \"Find critical bugs\",\n    description: \"Analyze recent commits for high-severity correctness bugs and submit safe fixes\",\n    icon: Bug,\n    defaultTrigger: { expr: \"0 10 * * 1\", tz: \"UTC\" },\n    defaultConversationConfig: {\n      initialPrompt: \"Inspect recent code changes for high-severity correctness bugs, regressions, race conditions, data loss risks, and broken edge cases. If you find a real issue, implement the smallest safe fix and validate it with targeted tests.\"\n    }\n  },\n  {\n    id: \"daily-change-summary\",\n    category: \"Status reports\",\n    name: \"Summarize changes daily\",\n    description: \"Post a daily digest summarizing notable repository changes and risks from the previous day\",\n    icon: Mail,\n    defaultTrigger: { expr: \"0 9 * * 1\", tz: \"UTC\" },\n    defaultConversationConfig: {\n      initialPrompt: \"Create a concise daily digest of notable repository changes from the previous day. Highlight shipped work, risky changes, migrations, open blockers, and recommended follow-ups.\"\n    }\n  },\n  {\n    id: \"codebase-vulnerability-scan\",\n    category: \"Security\",\n    name: \"Scan for vulnerabilities\",\n    description: \"Review the full repository on a schedule and alert on validated high-impact security issues\",\n    icon: Search,\n    defaultTrigger: { expr: \"0 11 * * 1\", tz: \"UTC\" },\n    defaultConversationConfig: {\n      initialPrompt: \"Review the repository for validated high-impact security vulnerabilities. Focus on authentication, authorization, injection, secret handling, unsafe filesystem or shell usage, SSRF, deserialization, and privilege boundaries. Avoid noisy theoretical findings; only report or fix exploitable issues.\"\n    }\n  },\n  {\n    id: \"test-coverage\",\n    category: \"Code quality\",\n    name: \"Add test coverage\",\n    description: \"Review recent changes and add tests for high-risk logic that lacks adequate coverage\",\n    icon: FlaskConical,\n    defaultTrigger: { expr: \"0 10 * * 2\", tz: \"UTC\" },\n    defaultConversationConfig: { initialPrompt: TEST_COVERAGE_PROMPT }\n  },\n  {\n    id: \"reported-bugs\",\n    category: \"Incidents & triage\",\n    name: \"Fix reported bugs\",\n    description: \"Investigate bug reports you provide in issues, docs, or prompt notes and fix with a PR\",\n    icon: Wrench,\n    defaultTrigger: { expr: \"0 10 * * 1\", tz: \"UTC\" },\n    defaultConversationConfig: {\n      initialPrompt: \"Review recent bug reports described in linked issues, project docs, or prompt notes. For actionable issues, reproduce or reason through the failure, identify the responsible code path, implement the smallest safe fix, add regression coverage, and prepare a PR summary. If no bug-report details are available, report what information is needed instead of guessing.\"\n    }\n  },\n  {\n    id: \"docs-generator\",\n    category: \"Documentation\",\n    name: \"Generate docs\",\n    description: \"Create and update developer documentation for recently changed or under-documented code\",\n    icon: BookOpen,\n    defaultTrigger: { expr: \"0 14 * * 5\", tz: \"UTC\" },\n    defaultConversationConfig: {\n      initialPrompt: \"Find recently changed or under-documented developer-facing code. Add concise documentation that explains behavior, setup, examples, sharp edges, and validation steps. Prefer updating existing docs over creating duplicate pages.\"\n    }\n  }\n];\n",
+    "after": "const builtinAutomationCatalog = [\n  {\n    id: \"critical-bug-finder\",\n    category: \"代码质量\",\n    name: \"查找严重缺陷\",\n    description: \"Analyze recent commits for high-severity correctness bugs and submit safe fixes\",\n    icon: Bug,\n    defaultTrigger: { expr: \"0 10 * * 1\", tz: \"UTC\" },\n    defaultConversationConfig: {\n      initialPrompt: \"Inspect recent code changes for high-severity correctness bugs, regressions, race conditions, data loss risks, and broken edge cases. If you find a real issue, implement the smallest safe fix and validate it with targeted tests.\"\n    }\n  },\n  {\n    id: \"daily-change-summary\",\n    category: \"状态报告\",\n    name: \"每日汇总更改\",\n    description: \"Post a daily digest summarizing notable repository changes and risks from the previous day\",\n    icon: Mail,\n    defaultTrigger: { expr: \"0 9 * * 1\", tz: \"UTC\" },\n    defaultConversationConfig: {\n      initialPrompt: \"Create a concise daily digest of notable repository changes from the previous day. Highlight shipped work, risky changes, migrations, open blockers, and recommended follow-ups.\"\n    }\n  },\n  {\n    id: \"codebase-vulnerability-scan\",\n    category: \"安全\",\n    name: \"扫描安全漏洞\",\n    description: \"Review the full repository on a schedule and alert on validated high-impact security issues\",\n    icon: Search,\n    defaultTrigger: { expr: \"0 11 * * 1\", tz: \"UTC\" },\n    defaultConversationConfig: {\n      initialPrompt: \"Review the repository for validated high-impact security vulnerabilities. Focus on authentication, authorization, injection, secret handling, unsafe filesystem or shell usage, SSRF, deserialization, and privilege boundaries. Avoid noisy theoretical findings; only report or fix exploitable issues.\"\n    }\n  },\n  {\n    id: \"test-coverage\",\n    category: \"代码质量\",\n    name: \"补充测试覆盖\",\n    description: \"Review recent changes and add tests for high-risk logic that lacks adequate coverage\",\n    icon: FlaskConical,\n    defaultTrigger: { expr: \"0 10 * * 2\", tz: \"UTC\" },\n    defaultConversationConfig: { initialPrompt: TEST_COVERAGE_PROMPT }\n  },\n  {\n    id: \"reported-bugs\",\n    category: \"事件与问题分诊\",\n    name: \"修复已报告的问题\",\n    description: \"Investigate bug reports you provide in issues, docs, or prompt notes and fix with a PR\",\n    icon: Wrench,\n    defaultTrigger: { expr: \"0 10 * * 1\", tz: \"UTC\" },\n    defaultConversationConfig: {\n      initialPrompt: \"Review recent bug reports described in linked issues, project docs, or prompt notes. For actionable issues, reproduce or reason through the failure, identify the responsible code path, implement the smallest safe fix, add regression coverage, and prepare a PR summary. If no bug-report details are available, report what information is needed instead of guessing.\"\n    }\n  },\n  {\n    id: \"docs-generator\",\n    category: \"文档\",\n    name: \"生成文档\",\n    description: \"Create and update developer documentation for recently changed or under-documented code\",\n    icon: BookOpen,\n    defaultTrigger: { expr: \"0 14 * * 5\", tz: \"UTC\" },\n    defaultConversationConfig: {\n      initialPrompt: \"Find recently changed or under-documented developer-facing code. Add concise documentation that explains behavior, setup, examples, sharp edges, and validation steps. Prefer updating existing docs over creating duplicate pages.\"\n    }\n  }\n];\n",
+    "count": 1
+  },
+  {
+    "before": "function describeShutdownImpact(summary) {\n  const localAgents = summary.acpSessions + summary.localTuiSessions;\n  const impacts = [];\n  if (localAgents > 0) {\n    impacts.push(`${localAgents} running agent ${localAgents === 1 ? \"session\" : \"sessions\"}`);\n  }\n  if (summary.terminals > 0) {\n    impacts.push(`${summary.terminals} ${summary.terminals === 1 ? \"terminal\" : \"terminals\"}`);\n  }\n  const stopped = impacts.length > 0 ? `${summary.incomplete ? \"At least \" : \"\"}${impacts.join(\" and \")} may be stopped.` : summary.incomplete ? \"Running agent sessions and terminals may be stopped.\" : \"Background services and automations will stop.\";\n  const remote2 = summary.remoteSessions > 0 ? ` ${summary.incomplete ? \"At least \" : \"\"}${summary.remoteSessions} remote ${summary.remoteSessions === 1 ? \"session\" : \"sessions\"} will keep running.` : \"\";\n  return `${stopped}${remote2}`;\n}",
+    "after": "function describeShutdownImpact(summary) {\n  const localAgents = summary.acpSessions + summary.localTuiSessions;\n  const impacts = [];\n  if (localAgents > 0) impacts.push(`${localAgents} 个正在运行的代理会话`);\n  if (summary.terminals > 0) impacts.push(`${summary.terminals} 个终端`);\n  const stopped = impacts.length > 0 ? `${summary.incomplete ? \"至少 \" : \"\"}${impacts.join(\"和\")}可能会停止。` : summary.incomplete ? \"正在运行的代理会话和终端可能会停止。\" : \"后台服务和自动化将停止。\";\n  const remote2 = summary.remoteSessions > 0 ? ` ${summary.incomplete ? \"至少 \" : \"\"}${summary.remoteSessions} 个远程会话将继续运行。` : \"\";\n  return `${stopped}${remote2}`;\n}",
+    "count": 1
+  }
+]
